@@ -29,4 +29,7 @@ public class Product {
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
+
+    public Product(String name, Category category, String description, Double price, int quantity, List<Comment> comments) {
+    }
 }
