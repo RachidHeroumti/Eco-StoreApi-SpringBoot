@@ -1,4 +1,7 @@
 package com.demo.AuthConfigs.repositories;
 
-public interface CommentRepo {
+import com.demo.AuthConfigs.models.Comment;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CommentRepo extends JpaRepository<Comment,Long> {
 }

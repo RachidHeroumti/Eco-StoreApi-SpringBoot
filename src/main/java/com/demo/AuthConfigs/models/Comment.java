@@ -20,5 +20,10 @@ public class Comment {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    public Comment(  User user,Product product,String content) {
+        this.product = product;
+        this.content = content;
+        this.user = user;
+    }
 
 }

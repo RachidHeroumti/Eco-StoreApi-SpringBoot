@@ -1,25 +1,42 @@
 package com.demo.AuthConfigs.DTO;
 
-public class CommnetDto {
+import com.demo.AuthConfigs.models.Product;
+import com.demo.AuthConfigs.models.User;
 
-    private Long userId;
-    private Long productId;
+public class CommnetDto {
+    private Long id;
+    private User userId;
+    private Product productId;
     private String commentContent;
 
-    // Getters and Setters
-    public Long getUserId() {
+
+    public CommnetDto(User userId, Product productId, String commentContent) {
+        this.userId = userId;
+        this.productId = productId;
+        this.commentContent = commentContent;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public User getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(User userId) {
         this.userId = userId;
     }
 
-    public Long getProductId() {
+    public Product getProductId() {
         return productId;
     }
 
-    public void setProductId(Long productId) {
+    public void setProductId(Product productId) {
         this.productId = productId;
     }
 
