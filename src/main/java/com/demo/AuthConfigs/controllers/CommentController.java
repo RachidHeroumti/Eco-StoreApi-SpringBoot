@@ -14,7 +14,7 @@ public class CommentController {
     @Autowired
     CommentService commentService ;
 
-    @PostMapping("get-comment")
+    @PostMapping("add-comment")
     public ResponseEntity<Comment> addComment(@RequestBody CommnetDto commnetDto){
         return commentService.addComment(commnetDto) ;
 
