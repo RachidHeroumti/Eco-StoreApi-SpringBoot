@@ -17,6 +17,13 @@ public class CommentController {
     @PostMapping("add-comment")
     public ResponseEntity<Comment> addComment(@RequestBody CommnetDto commnetDto){
         return commentService.addComment(commnetDto) ;
-
+    }
+    @PostMapping("update-comment")
+    public ResponseEntity<Comment> UpdateComment(@RequestBody CommnetDto commnetDto){
+        return commentService.updateComment(commnetDto) ;
+    }
+    @PostMapping("delete-comment")
+    public ResponseEntity<Comment> deletCOMMENT(@RequestBody CommnetDto commnetDto){
+        return commentService.delateComment(commnetDto) ;
     }
 }
