@@ -23,7 +23,7 @@ public class CommentController {
         return commentService.updateComment(commnetDto) ;
     }
     @PostMapping("delete-comment")
-    public ResponseEntity<Comment> deletCOMMENT(@RequestBody CommnetDto commnetDto){
-        return commentService.delateComment(commnetDto) ;
+    public ResponseEntity<String> deletCOMMENT(@RequestBody CommnetDto commnetDto){
+        return commentService.deleteComment(commnetDto) ;
     }
 }
