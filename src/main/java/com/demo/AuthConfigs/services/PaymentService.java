@@ -19,11 +19,10 @@ public class PaymentService {
         Payment p=paymentRepo.save(convertToEntity(paymentDto) );
         return new ResponseEntity<>(p, HttpStatus.CREATED);
     }
-
-
     private Payment convertToEntity(PaymentDto paymentRequestDTO) {
         Payment payment = new Payment();
         BeanUtils.copyProperties(paymentRequestDTO, payment);
+
         return payment;
     }
 }

@@ -4,5 +4,5 @@ import com.demo.AuthConfigs.models.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepo extends JpaRepository<Product,Long> {
-    Iterable<Product> findByCategory();
+    Iterable<Product> findByCategory(Long id);
 }

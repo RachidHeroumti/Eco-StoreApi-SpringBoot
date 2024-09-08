@@ -1,13 +1,12 @@
 package com.demo.AuthConfigs.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -29,7 +28,27 @@ public class Product {
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Comment> comments;
+    private List<String> Images ;
 
     public Product(String name, Category category, String description, Double price, int quantity, List<Comment> comments) {
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.comments = comments;
     }
+
+    public Product(String name, Category category, String description, Double price, int quantity, List<Comment> comments, List<String> images) {
+        this.id = id;
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.comments = comments;
+        Images = images;
+    }
+
+
 }

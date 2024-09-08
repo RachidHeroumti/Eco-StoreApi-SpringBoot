@@ -13,6 +13,7 @@ public class ProductDto {
     private Double price;
     private int quantity;
     private List<Comment> comments;
+    private List<String> images;
 
     public ProductDto() {
     }
@@ -24,6 +25,24 @@ public class ProductDto {
         this.price = price;
         this.quantity = quantity;
         this.comments = comments;
+    }
+
+    public ProductDto(String name, Category category, String description, Double price, int quantity, List<Comment> comments, List<String> images) {
+        this.name = name;
+        this.category = category;
+        this.description = description;
+        this.price = price;
+        this.quantity = quantity;
+        this.comments = comments;
+        this.images = images;
+    }
+
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 
     public Long getId() {

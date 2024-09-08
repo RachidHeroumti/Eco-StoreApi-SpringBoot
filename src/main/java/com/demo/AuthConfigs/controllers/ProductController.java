@@ -21,7 +21,7 @@ public class ProductController {
     }
 
     @GetMapping("get-pr/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable Long id){
+    public ResponseEntity<ProductDto> getProductById(@PathVariable Long id){
         return productServices.getProductDetails(id) ;
     }
 
@@ -32,7 +32,7 @@ public class ProductController {
 
 
     @PostMapping("create-pr")
-    public ResponseEntity<Product> AddProduct(@RequestBody ProductDto product){
+    public ResponseEntity<ProductDto> AddProduct(@RequestBody ProductDto product){
         return productServices.addProduct(product);
     }
 
