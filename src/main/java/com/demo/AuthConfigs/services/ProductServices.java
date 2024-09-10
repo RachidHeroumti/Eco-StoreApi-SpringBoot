@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -46,7 +47,6 @@ public class ProductServices {
     public ResponseEntity<ProductDto> addProduct(ProductDto productdto) {
         Product p = createProductFromDto(productdto);
         //add code later to upload images than get url;
-
          productRepo.save(p);
          ProductDto pdto=convertToDtoProduct(p);
         return new ResponseEntity<>(pdto,HttpStatus.CREATED);
@@ -66,6 +66,10 @@ public class ProductServices {
 
     public ProductDto convertToDtoProduct(Product product) {
         return modelMapper.map(product,ProductDto.class);
+    }
+
+    public List<ProductDto> getConvertedProducts(List<Product> products) {
+        return products.stream().map(this::convertToDtoProduct).toList();
     }
 }
 

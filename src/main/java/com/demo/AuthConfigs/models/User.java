@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "articlesdb")
+@Entity(name = "ecostoredb")
 @Table(name = "users",
         uniqueConstraints = {
         @UniqueConstraint(columnNames = "email")
