@@ -1,6 +1,7 @@
 package com.demo.AuthConfigs.services;
 
 import com.demo.AuthConfigs.DTO.ProductDto;
+import com.demo.AuthConfigs.Responces.ResponceApi;
 import com.demo.AuthConfigs.models.Product;
 import com.demo.AuthConfigs.repositories.ProductRepo;
 import org.modelmapper.ModelMapper;
@@ -30,9 +31,9 @@ public class ProductServices {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
-    public ResponseEntity<ProductDto> getProductDetails(Long id) {
+    public ResponseEntity<ResponceApi> getProductDetails(Long id) {
         Optional<Product> product = productRepo.findById(id);
-        return new ResponseEntity<>(convertToDtoProduct(product.orElse(null)),HttpStatus.OK) ;
+        return new ResponseEntity<>( new ResponceApi("Product details",convertToDtoProduct(product.orElse(null))),HttpStatus.OK) ;
                 //product.map(p -> new ResponseEntity<>(p, HttpStatus.OK))
         //                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
@@ -44,12 +45,12 @@ public class ProductServices {
         return new ResponseEntity<>(products,HttpStatus.OK);
     }
 
-    public ResponseEntity<ProductDto> addProduct(ProductDto productdto) {
+    public ResponseEntity<ResponceApi> addProduct(ProductDto productdto) {
         Product p = createProductFromDto(productdto);
         //add code later to upload images than get url;
          productRepo.save(p);
          ProductDto pdto=convertToDtoProduct(p);
-        return new ResponseEntity<>(pdto,HttpStatus.CREATED);
+        return new ResponseEntity<>(new ResponceApi("product added ",pdto),HttpStatus.CREATED);
     }
 
     public Product createProductFromDto(ProductDto dto) {

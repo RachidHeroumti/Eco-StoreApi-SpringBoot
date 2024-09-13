@@ -15,15 +15,14 @@ public class CartItem {
     @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id ;
-
     private Double unitPrice  ;
     private Cart cart ;
-
     @OneToOne
     @JoinColumn(name = "product_id")
     private Product product ;
-
     private int Quantity ;
+
+
 
     public CartItem(Long cartId, Product product, int quantity) {
         this.cart.setId(cartId);
@@ -71,6 +70,7 @@ public class CartItem {
     public void setQuantity(int quantity) {
         Quantity = quantity;
     }
+
 
 
 }

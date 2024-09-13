@@ -2,6 +2,7 @@ package com.demo.AuthConfigs.services;
 
 
 import com.demo.AuthConfigs.DTO.CategoyDto;
+import com.demo.AuthConfigs.Responces.ResponceApi;
 import com.demo.AuthConfigs.models.Category;
 import com.demo.AuthConfigs.repositories.CategoryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +23,13 @@ public class CategoryService {
     }
 
 
-    public ResponseEntity<Category> addCategory(CategoyDto categoy) {
+    public ResponseEntity<ResponceApi> addCategory(CategoyDto categoy) {
 
         Category c=new Category(
                 categoy.getName(),
                 categoy.getDescription()
         );
                 categoryRepo.save(c);
-        return new ResponseEntity<>(c,HttpStatus.CREATED) ;
+        return new ResponseEntity<>(new ResponceApi("category added",c),HttpStatus.CREATED) ;
     }
 }

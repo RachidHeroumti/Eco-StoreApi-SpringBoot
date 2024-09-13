@@ -1,5 +1,6 @@
 package com.demo.AuthConfigs.models;
 
+import com.demo.AuthConfigs.domain.UserRoles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,15 +26,14 @@ public class User {
     private String email;
     @Column(nullable = false, length = 64)
     private String password;
-
-    private  String role ;
+    private UserRoles role ;
     private boolean enabled ;
 
     public User(String name, String email, String password, String role) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.role = role;
+        this.role = UserRoles.valueOf(role);
     }
 
     public boolean isEnabled() {
@@ -44,12 +44,12 @@ public class User {
         this.enabled = enabled;
     }
 
-    public String getRole() {
+    public UserRoles getRole() {
         return role;
     }
 
     public void setRole(String role) {
-        this.role = role;
+        this.role = UserRoles.valueOf(role);
     }
 
     public long getId() {

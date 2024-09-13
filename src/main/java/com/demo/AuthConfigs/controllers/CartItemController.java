@@ -1,6 +1,7 @@
 package com.demo.AuthConfigs.controllers;
 
 import com.demo.AuthConfigs.DTO.ProductDto;
+import com.demo.AuthConfigs.Exceptions.SrcNotFoundException;
 import com.demo.AuthConfigs.Responces.ResponceApi;
 import com.demo.AuthConfigs.models.CartItem;
 import com.demo.AuthConfigs.models.Product;
@@ -33,12 +34,14 @@ public class CartItemController {
 
     @PutMapping("update/cart/{cartId}/item/{itemId}")
 
-    public ResponseEntity<ResponceApi> UpdateQuantity(@PathVariable long cartId,@PathVariable long itemId,@RequestParam BigDecimal NewQuantity){
+    public ResponseEntity<ResponceApi> UpdateQuantity(@PathVariable long cartId,@PathVariable long itemId,@RequestParam int NewQuantity){
         try{
-            CartItem cartItem= cartItemService.UpdateQuantity(cartId,itemId,NewQuantity);
-          return  new ResponseEntity<>(new ResponceApi("updated successfuly",cartItem),HttpStatus.OK) ;
-        }catch (Exception e){
+            cartItemService.updateItemQuantity(cartId,itemId,NewQuantity);
+          return  new ResponseEntity<>(new ResponceApi("updated successfuly",null),HttpStatus.OK) ;
+        }catch (SrcNotFoundException e){
            return new ResponseEntity<>(new ResponceApi(e.getMessage(),null),HttpStatus.NOT_FOUND);
+        }catch (Exception e){
+            return new ResponseEntity<>(new ResponceApi("An error occurred while updating  the item",null),HttpStatus.NOT_FOUND);
         }
     }
 

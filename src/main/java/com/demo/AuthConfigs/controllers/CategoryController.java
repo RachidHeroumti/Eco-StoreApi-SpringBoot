@@ -1,6 +1,7 @@
 package com.demo.AuthConfigs.controllers;
 
 import com.demo.AuthConfigs.DTO.CategoyDto;
+import com.demo.AuthConfigs.Responces.ResponceApi;
 import com.demo.AuthConfigs.models.Category;
 import com.demo.AuthConfigs.services.CategoryService;
 import org.apache.coyote.Response;
@@ -21,7 +22,7 @@ public class CategoryController {
     }
 
     @PostMapping("add-gt")
-    public ResponseEntity<Category> addCategory(@RequestBody CategoyDto categoy){
+    public ResponseEntity<ResponceApi> addCategory(@RequestBody CategoyDto categoy){
         return categoryService.addCategory(categoy);
 
     }
